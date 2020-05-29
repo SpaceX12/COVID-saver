@@ -11,50 +11,54 @@ function preload(){
 }
 
 function setup(){
-    canvas = createCanvas(windowWidth - 10, windowHeight - 8);
-    a = createSprite(windowWidth/2, windowHeight/2);
+    canvas = createCanvas(displayWidth, displayHeight);
+    a = createSprite(displayWidth/2, displayHeight/2);
     a.addImage(roadImg);
-    a.y = windowWidth-(a.height/2)
-    console.log(windowHeight);
+    a.y = -2950;
+    console.log(displayHeight);
     //a.debug = true;
-    a.scale = 4.3;
+    a.scale = 4.5;
+    console.log(a.height);
+
+
+    a.velocityY = 4;
 
     b = createSprite(10, 50);
     b.addImage(person1Img);
 
     b.debug = true;
-    b.scale = 0.35;
+    b.scale = 0.15;
 
     c = createSprite(110, 50);
     c.addImage(person2Img);
 
     c.debug = true;
-    c.scale = 0.23;
+    c.scale = 0.15;
 
     d = createSprite(210, 50);
     d.addImage(person3Img);
 
     d.debug = true;
-    d.scale = 0.21;
+    d.scale = 0.1;
 
     e = createSprite(300, 50);
     e.addImage(potholeImg);
 
     e.debug = true;
-    e.scale = 0.28;
+    e.scale = 0.15;
     e.setCollider("circle", 0, 0, e.width/2-30);
 
     f = createSprite(400, 50);
     f.addImage(barrierImg);
 
     f.debug = true;
-    f.scale = 0.4;
+    f.scale = 0.2;
 
-    g = createSprite(500, displayHeight);
+    g = createSprite(500, 770);
     g.addImage(carImg);
 
     g.debug = true;
-    //g.scale = 0.4;
+    g.scale = 0.7;
     g.setCollider("rectangle", 0, 0, g.width-70, g.height-36);
 
 }
@@ -62,20 +66,11 @@ function setup(){
 function draw(){
     background(0);
 
-    camera.position.x = windowWidth/2;
-    //camera.position.y = g.y;
+    //console.log(a.y);
 
-    if(keyDown(UP_ARROW)){
-        //g.setVelocity(0, -25);
-        a.velocityY  = -25;
-
-    }else if(keyDown(RIGHT_ARROW)){
-        g.setVelocity(10, -25);
-
-    }else if(keyDown(LEFT_ARROW)){
-        g.setVelocity(-10, -25);
+    if(a.y>0){
+        a.y = -2800;
     }
-
-
+    
     drawSprites();
 }
